@@ -5,6 +5,7 @@ export const findAllFood = async () => {
     try {
         const client = await pool.getConnection();
         const result = await client.query(QUERY);
+        client.destroy();
         return result[0];
     } catch (error) {
         console.log("Error in findAllFood(): ");
@@ -41,4 +42,17 @@ export const createFoodById = async (fid, name, price
         throw error;
     }
     
+}
+
+export const updateFoodById = async (fid, name, price) => {
+    const QUERY = 'UPDATE food SET name = ?, price = ? WHERE fid = ? ';
+    try {
+        const client = await pool.getConnection();
+        const result = await client.query(QUERY, [name, price, fid]);
+        return result;
+    } catch (error) {
+        console.log("Error in updateFoodById(): ");
+        console.log(error);
+        throw error;
+    }
 }

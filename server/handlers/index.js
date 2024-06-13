@@ -1,6 +1,7 @@
 import {findAllFood,
         findFoodById,
-        createFoodById
+        createFoodById,
+        updateFoodById
 } from "../DB/queries.js";
 
 export const getAllFood = async (req, res) => { 
@@ -33,6 +34,19 @@ export const createFood = async (req, res) => {
         const food = await createFoodById(fid, name, price);
         return res.status(201).json({Message: "Food created succesfully!",
         food})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message: "Error occured"})
+    }
+};
+
+export const updateFood = async(req, res) =>{
+    const {name, price} = req.body;
+    const fid = req.params.id;
+    try {
+        const course = await updateFoodById(fid, name, price);
+        return res.status(201).json({Message: "Food updated succesfully!",
+                                    course})
     } catch (error) {
         console.log(error)
         res.status(500).json({message: "Error occured"})
