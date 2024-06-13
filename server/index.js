@@ -1,14 +1,14 @@
 import express from "express";
 import appRoute from "./routes/index.js";
 import {connectToDatabase} from "./DB/index.js";
-// import cors from 'cors';
+import cors from 'cors';
 
 
 const app = express();
 
 const PORT = process.env.POST || 5000;
 
-// app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 
 connectToDatabase()
