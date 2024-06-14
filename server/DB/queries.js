@@ -56,3 +56,16 @@ export const updateFoodById = async (fid, name, price) => {
         throw error;
     }
 }
+
+export const deleteFoodById = async (fid) => {
+    const QUERY = 'DELETE FROM food WHERE fid = ? ';
+    try {
+        const client = await pool.getConnection();
+        const result = await client.query(QUERY, [fid]);
+        return result;
+    } catch (error) {
+        console.log("Error in deleteFood(): ");
+        console.log(error);
+        throw error;
+    }
+}

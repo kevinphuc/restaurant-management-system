@@ -1,0 +1,47 @@
+.menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px;
+}
+
+.menu h3 {
+    margin: 0;
+}
+
+.menu span {
+    margin-top: 5px;
+}
+
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.add-food-button {
+    background-color: #78C27D;
+    /* Lighter green */
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    /* Change to block to center properly */
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-food-button:hover {
+    background-color: #5BA85D;
+    /* Slightly darker green on hover */
+}
+
+.add-food-button a {
+    color: white;
+    text-decoration: none;
+}

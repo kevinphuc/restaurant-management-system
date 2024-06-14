@@ -1,7 +1,8 @@
 import {findAllFood,
         findFoodById,
         createFoodById,
-        updateFoodById
+        updateFoodById,
+        deleteFoodById
 } from "../DB/queries.js";
 
 export const getAllFood = async (req, res) => { 
@@ -47,6 +48,17 @@ export const updateFood = async(req, res) =>{
         const course = await updateFoodById(fid, name, price);
         return res.status(201).json({Message: "Food updated succesfully!",
                                     course})
+    } catch (error) {
+        console.log(error)
+        res.status(500).json({message: "Error occured"})
+    }
+};
+
+export const deleteFood = async(req, res) =>{
+    const fid = req.params.id;
+    try {
+        const course = await deleteFoodById(fid);
+        return res.status(201).json({Message: "Food deleted succesfully!", course})
     } catch (error) {
         console.log(error)
         res.status(500).json({message: "Error occured"})
