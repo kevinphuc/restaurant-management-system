@@ -20,6 +20,7 @@ export const findFoodById = async (id) => {
     try {
         const client = await pool.getConnection();
         const result = await client.query(QUERY, [id]);
+        client.destroy();
         return result[0];
     } catch (error) {
         console.log("Error in findMajorById(): ");
@@ -35,6 +36,7 @@ export const createFoodById = async (fid, name, price
     try {
         const client = await pool.getConnection();
         const result = await client.query(QUERY, [fid, name, price]);
+        client.destroy();
         return result;
     } catch (error) {
         console.log("Error in createMajor(): ");
@@ -49,6 +51,7 @@ export const updateFoodById = async (fid, name, price) => {
     try {
         const client = await pool.getConnection();
         const result = await client.query(QUERY, [name, price, fid]);
+        client.destroy();
         return result;
     } catch (error) {
         console.log("Error in updateFoodById(): ");
@@ -62,6 +65,7 @@ export const deleteFoodById = async (fid) => {
     try {
         const client = await pool.getConnection();
         const result = await client.query(QUERY, [fid]);
+        client.destroy();
         return result;
     } catch (error) {
         console.log("Error in deleteFood(): ");

@@ -1,24 +1,25 @@
 import React from 'react'
 import axios from 'axios'
-import {react, useEffect, useState} from 'react';
+
 import { useNavigate } from "react-router-dom";
+import { useState } from 'react';
 
 const baseURL = `http://localhost:5000/api/food`;
 
 const AddFood = () => {
     const [food, setFood] = useState({
-        fid:"",
-        name:"",
+        fid: "",
+        name: "",
         price: null
     })
 
     const navigate = useNavigate()
 
     const handleChange = (e) => {
-        setFood(prev=>({...prev, [e.target.name]: e.target.value}))
+        setFood(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
-    const handleClick = async (e) =>{
+    const handleClick = async (e) => {
         e.preventDefault()
         try {
             await axios.post(`${baseURL}/create`, food)

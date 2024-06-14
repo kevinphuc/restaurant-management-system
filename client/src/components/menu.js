@@ -1,7 +1,9 @@
-import './components.css';
 import { Link } from "react-router-dom";
 import axios from 'axios'
-import {react, useEffect, useState} from 'react';
+import {
+  useEffect,
+  useState
+} from 'react';
 
 const baseURL = `http://localhost:5000/api/food`;
 
@@ -22,10 +24,10 @@ function Menu() {
 
   const handleDelete = async (id) => {
     try {
-        await axios.delete(`${baseURL}/delete/${id}`)
-        window.location.reload()
+      await axios.delete(`${baseURL}/delete/${id}`)
+      window.location.reload()
     } catch (error) {
-        console.log(error)
+      console.log(error)
     }
   }
 
@@ -34,22 +36,22 @@ function Menu() {
       <div>
         {
           food.map((f) => {
-            return(
-                <div className="menu" key={f.fid}>
-                  <h3>{f.name}</h3>
-                  <span>${f.price}</span>
-                  <button className='delete' onClick={() => handleDelete(f.fid)}>Delete</button>
-                  <button className='update'><Link to={`/menu/update/${f.fid}`}>Update</Link></button>
-                </div>
-              )
+            return (
+              <div className="menu" key={f.fid}>
+                <h3>{f.name}</h3>
+                <span>${f.price}</span>
+                <button className='delete' onClick={() => handleDelete(f.fid)}>Delete</button>
+                <button className='update'><Link to={`/menu/update/${f.fid}`}>Update</Link></button>
+              </div>
+            )
           })
         }
       </div>
-        <div className="button-container">
-            <button className="add-food-button">
-                <Link to="/menu/add">Add new food</Link>
-            </button>
-        </div>
+      <div className="button-container">
+        <button className="add-food-button">
+          <Link to="/menu/add">Add new food</Link>
+        </button>
+      </div>
     </div>
   );
 }

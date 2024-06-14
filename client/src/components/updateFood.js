@@ -1,14 +1,15 @@
 import React from 'react'
 import axios from 'axios'
-import {react, useEffect, useState} from 'react';
-import { useNavigate, useLocation  } from "react-router-dom";
+
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState } from 'react';
 
 const baseURL = `http://localhost:5000/api/food`;
 
 const UpdateFood = () => {
 
     const [food, setFood] = useState({
-        name:"",
+        name: "",
         price: null
     })
 
@@ -16,10 +17,10 @@ const UpdateFood = () => {
     const location = useLocation();
 
     const handleChange = (e) => {
-        setFood(prev=>({...prev, [e.target.name]: e.target.value}))
+        setFood(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
-    const handleClick = async (e) =>{
+    const handleClick = async (e) => {
         e.preventDefault()
         const id = location.pathname.split('/')[3]
         try {
@@ -33,8 +34,8 @@ const UpdateFood = () => {
     return (
         <div className='form'>
             <h1>Update Food</h1>
-            <input type="text" placeholder='Food name'  onChange={handleChange} name="name"></input>
-            <input type="float" placeholder='price'  onChange={handleChange} name="price"></input>
+            <input type="text" placeholder='Food name' onChange={handleChange} name="name"></input>
+            <input type="float" placeholder='price' onChange={handleChange} name="price"></input>
             <button onClick={handleClick}>Update</button>
         </div>
     )
