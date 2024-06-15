@@ -4,7 +4,8 @@ import {findAllFood,
         updateFoodById,
         deleteFoodById,
         getUserByEmail,
-        getUserRole
+        getUserRole,
+        deleteFoodById
 } from "../DB/queries.js";
 
 export const getAllFood = async (req, res) => { 
@@ -83,8 +84,3 @@ export const login = async (req, res) => {
         } else {
             return res.json({Error: "No email existed"})
         }
-    } catch (error) {
-        console.log(error)
-        res.status(500).json({message: "Error occured"})
-    }
-};

@@ -3,8 +3,8 @@ import { getAllFood,
         getFood,
         createFood,
         updateFood,
-        deleteFood,
-        login
+        login,
+        deleteFood
 } from
     "../handlers/index.js";
 

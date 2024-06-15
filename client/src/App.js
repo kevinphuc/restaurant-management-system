@@ -1,38 +1,24 @@
-import axios from 'axios'
+import Menu from "./components/menu.js"
+import AddFood from "./components/addFood.js"
+import UpdateFood from "./components/updateFood.js"
 
-import {react, useEffect, useState} from 'react';
+import { 
+  BrowserRouter,
+  Routes,
+  Route 
+} from "react-router-dom";
 
 function App() {
-  const [food, setFood] = useState([]);
-  useEffect(() => {
-    const fetchFood = async () => {
-      console.log("Running")
-      try {
-        const res = await fetch("http://localhost:5000/api/food");
-        console.log(res);
-        const data = await res.json();
-        setFood(data.food);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchFood();
-  }, []);
-
 
   return (
-    <div>
-      {
-        food.map((f) => {
-          return(
-              <div key={f.fid}>
-                <h1>{f.fid}</h1>
-                <h1>{f.name}</h1>
-                <h1>{f.price}</h1>
-              </div>
-            )
-        })
-      }
+    <div className="">
+    <BrowserRouter>
+      <Routes>
+        <Route path="/menu" element={<Menu/>}/>
+        <Route path="/menu/add" element={<AddFood/>}/>
+        <Route path="/menu/update/:id" element={<UpdateFood/>}/>
+      </Routes>
+    </BrowserRouter>
     </div>
   );
 }
