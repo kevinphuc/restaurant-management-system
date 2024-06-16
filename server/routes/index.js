@@ -3,8 +3,10 @@ import { getAllFood,
         getFood,
         createFood,
         updateFood,
+        deleteFood,
         login,
-        deleteFood
+        createFood_course,
+        getFoodByCourse
 } from
     "../handlers/index.js";
 
@@ -17,6 +19,8 @@ appRouter.post("/food/update/:id", updateFood);
 
 appRouter.post("/login", login)
 
+appRouter.post("/course/add_food_course", createFood_course);
+appRouter.get("/course/:id", getFoodByCourse);
 
 
 export default appRouter;

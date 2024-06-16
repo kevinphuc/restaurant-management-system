@@ -1,24 +1,36 @@
 import Menu from "./components/menu.js"
 import AddFood from "./components/addFood.js"
 import UpdateFood from "./components/updateFood.js"
+import NavBar from "./components/Navbar.jsx";
+import Login from "./components/login.js"
+import Base from "./components/base.js"
+import Bill from "./components/customer/bill.js"
+import MenuCustomer from "./components/customer/menu_customer.js";
 
-import { 
+import {
   BrowserRouter,
   Routes,
-  Route 
+  Route
 } from "react-router-dom";
 
-function App() {
+export const clientURL = `http://localhost:3000`;
+
+const App = () => {
 
   return (
-    <div className="">
-    <BrowserRouter>
-      <Routes>
-        <Route path="/menu" element={<Menu/>}/>
-        <Route path="/menu/add" element={<AddFood/>}/>
-        <Route path="/menu/update/:id" element={<UpdateFood/>}/>
-      </Routes>
-    </BrowserRouter>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<NavBar />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/base" element={<Base />} />
+          <Route path="/bill" element={<Bill />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/menu_customer" element={<MenuCustomer />} />
+          <Route path="/menu/add" element={<AddFood />} />
+          <Route path="/menu/update/:id" element={<UpdateFood />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,15 @@
+<div className="lg:pl-44">
+        <Button title="Add new food">
+          <Link
+            to="/menu/add"
+            spy={true}
+            smooth={true}
+            duration={500}
+          >
+            Add new food
+          </Link>
+        </Button>
+</div> 
+
+<button className='delete' onClick={() => handleDelete(f.fid)}>Delete</button>
+<button className='update'><Link to={`/menu/update/${f.fid}`}>Update</Link></button> 

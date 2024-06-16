@@ -1,15 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-
+import { react, useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { useState } from 'react';
 
-const baseURL = `http://localhost:5000/api/food`;
 
 const AddFood = () => {
     const [food, setFood] = useState({
-        fid: "",
         name: "",
+        description: "",
         price: null
     })
 
@@ -22,7 +20,7 @@ const AddFood = () => {
     const handleClick = async (e) => {
         e.preventDefault()
         try {
-            await axios.post(`${baseURL}/create`, food)
+            await axios.post("http://localhost:5000/api/food/create", food)
             navigate("/menu")
         } catch (error) {
             console.log(error)
@@ -30,12 +28,16 @@ const AddFood = () => {
     }
 
     return (
-        <div className='form'>
-            <h1>Add New Food</h1>
-            <input type="text" placeholder='Food ID' onChange={handleChange} name="fid"></input>
-            <input type="text" placeholder='Food name' onChange={handleChange} name="name"></input>
-            <input type="float" placeholder='price' onChange={handleChange} name="price"></input>
-            <button onClick={handleClick}>Add</button>
+        <div className='flex flex-cols h-screen items-center'>
+            <div className='mx-auto rounded-xl px-6 py-1 border-2 border-backgroundColor text-backgroundColor'>
+                <div>
+                    <h1>Add New Food</h1>
+                    <input type="text" placeholder='Food name' onChange={handleChange} name="name"></input>
+                    <input type="text" placeholder='Food description' onChange={handleChange} name="description"></input>
+                    <input type="float" placeholder='price' onChange={handleChange} name="price"></input>
+                </div>
+                <button onClick={handleClick}>Add</button>
+            </div>
         </div>
     )
 }
